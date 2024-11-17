@@ -1,2 +1,2 @@
 # partyduel-js
-parties and duels and everything in between
+[parties and duels](https://rainnerhmm.github.io/partyduel-js/partyduel/) and everything in between
