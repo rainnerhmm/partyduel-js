@@ -1,0 +1,93 @@
+// notes;
+// purple and crownspots will always be in the same place.
+
+// Purple; The Starting Area: Place your Characters in this area to start the Game.
+
+// Blue; Land Here and take 1 Movement Card from the Pile.
+
+// Red; Land Here and put 2 of your Movement Cards at the bottom of the Movement Card Pile.
+
+// Green; Land Here and take 1 Chance Card from the Chance Card Pile.
+
+// Yellow; Land Here and take the Super Card from under the Yellow Space.
+
+// How a duel works; If you land on the same space as someone else, a Duel commences.
+// You place down 4 Movement Cards facing downwards, Flip the last one. 
+// If your flipped card is higher than the opponent, if both of you have the same number, 
+// repeat until victorious, or until your movement cards run out.
+// * You can choose any cards to be used in a Duel. If you have a Super Card in your deck the opponent will receive it,
+
+// Movement Cards; You start the game with 5 Movement Cards.  Organize, Strategize, and Maximize with your cards to become victorious. 
+// * You can get more Movement Cards from Duels, Chance Cards & Blue Spaces
+
+// Chance Cards; You get these cards from Green Spaces, you can do special things with them like: Four-Way Duels...
+// ...Take 5 Movement Cards from any opponent, and more. Once used return to the bottom of the Chance Card Pile.
+
+// How to Win; You win the Game by collecting all 4 Super Cards.
+
+  // cool spinning effect when pressing f11 attempt through code (about 3 seconds) when resizing
+
+// stuff for later;
+
+// bouncing text reference
+// https://codepen.io/SteveJRobertson/pen/xwxeGO
+
+// // https://schellenberg.github.io/cs30-exemplar-projects/grid-based-game-exemplars/index.html
+
+// assets
+// https://kenney.nl/assets/board-game-info
+// https://kenney.nl/assets/board-game-icons
+// https://kenney.nl/assets/ui-pack
+// https://kenney.nl/assets/cursor-pack
+// https://kenney.nl/assets/pattern-pack
+// https://kenney.nl/assets/emotes-pack
+// https://kenney.nl/assets/boardgame-pack
+// https://kenney.nl/assets/playing-cards-pack
+// https://kenney.nl/assets/game-icons
+
+scrapped code;
+  // playmenu
+  rect(horizSpace * 1.1, vertSpace * 0.7, infoSizeW * SCALE.HALVED, infoSizeH * SCALE.HALVED);
+  rect(horizSpace * 1.1, vertSpace * 0.5, infoSizeW * SCALE.HALVED, infoSizeH * SCALE.HALVED);
+  rect(horizSpace * 1.1, vertSpace * 0.3, infoSizeW * SCALE.HALVED, infoSizeH * SCALE.HALVED);
+  // player turn and info
+  rect(horizSpace * 0.15, vertSpace * 0.7, infoSizeW * SCALE.HALVED, infoSizeH * SCALE.HALVED);
+  rect(horizSpace * 0.15, vertSpace * 0.5, infoSizeW * SCALE.HALVED, infoSizeH * SCALE.HALVED);
+  rect(horizSpace * 0.15, vertSpace * 0.3, infoSizeW * SCALE.HALVED, infoSizeH * SCALE.HALVED);
+
+  function setup() { // also used in windowResized
+  createCanvas(windowWidth, windowHeight);
+
+  // scales everything to current window width
+  gridSize = windowWidth * SCALE.GRID;  
+  cellSize = gridSize / GRID_DIM;
+  
+  clockSize = windowWidth * SCALE.CLOCK;
+  infoSizeW = windowWidth * SCALE.INFO_W;
+  infoSizeH = windowWidth * SCALE.INFO_H;
+
+  textSize(gridSize * SCALE.TEXT);
+
+  // centers board / grid
+  horizPadding = (windowWidth - gridSize) * SCALE.HALVED;
+  vertPadding = (windowHeight - gridSize) * SCALE.HALVED;
+
+  horizSpace = horizPadding + gridSize;
+  vertSpace = vertPadding + gridSize;
+
+  // generates board layout
+  grid = boardLayout(GRID_DIM, GRID_DIM);
+
+  function draw() {
+  background(COLOR_PALETTE.BG);
+  textFont(gameFont); // sets text font
+
+  if (gameState === "title") {
+    titleScreen(); // displays 'title' screen
+  }
+  else if (gameState === "play") {
+    boardGraphics();
+    infoGraphics();
+  }
+}
+}
